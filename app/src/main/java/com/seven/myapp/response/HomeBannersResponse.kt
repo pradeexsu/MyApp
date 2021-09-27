@@ -3,7 +3,7 @@ package com.seven.myapp.response
 
 import com.google.gson.annotations.SerializedName
 
-class HomeBannersResponse : ArrayList<HomeBannersResponse.HomeBannersResponseItem>(){
+sealed class HomeBannersResponse : ArrayList<HomeBannersResponse>(){
     data class HomeBannersResponseItem(
         @SerializedName("color")
         val color: String?=null,

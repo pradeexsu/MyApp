@@ -3,7 +3,6 @@ package com.seven.myapp
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.seven.myapp.databinding.*
@@ -12,14 +11,7 @@ import com.seven.myapp.response.HomeBannersResponse
 class MainAdapter(
     val context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var banners = listOf(
-        HomeBannersResponse.HomeBannersResponseItem(text = "ban rect", type = "rect"),
-        HomeBannersResponse.HomeBannersResponseItem(text = "mic line", type = "line"),
-        HomeBannersResponse.HomeBannersResponseItem(text = "ten strip", type = "strip"),
-        HomeBannersResponse.HomeBannersResponseItem(text = "mic line", type = "line"),
-        HomeBannersResponse.HomeBannersResponseItem(text = "doc square", type = "square"),
-        HomeBannersResponse.HomeBannersResponseItem(text = "mic line", type = "line")
-    )
+    private var banners = ArrayList<HomeBannersResponse.HomeBannersResponseItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -44,7 +36,7 @@ class MainAdapter(
                     false
                 ), context
             )
-            LINE_BANNER -> SepratorLineViewHolder(
+            LINE_BANNER -> SeparatorLineViewHolder(
                 ItemLineSepratorBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -58,14 +50,48 @@ class MainAdapter(
                     false
                 ), context
             )
-            else -> SepratorLineViewHolder(
-                ItemLineSepratorBinding.inflate(
+            USER_BANNER -> UserViewHolder(
+                ItemUserProfileBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 ), context
             )
-
+            SUPER_BANNER -> SuperUserViewHolder(
+                ItemSuperUserProfileBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ), context
+            )
+            TEXT_BANNER -> TextViewHolder(
+                ItemTextBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ), context
+            )
+            IMAGE_BANNER -> ImageViewHolder(
+                ItemImageBannerBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ), context
+            )
+            NA_BANNER -> NaViewHolder(
+                ItemNaBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ), context
+            )
+            else -> NaViewHolder(
+                ItemNaBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ), context
+            )
         }
     }
 
@@ -78,9 +104,14 @@ class MainAdapter(
                 position
             )
             STRIP_BANNER -> (holder as StripBannerViewHolder).bind(banners[position], position)
-            LINE_BANNER -> (holder as SepratorLineViewHolder).bind(banners[position], position)
+            LINE_BANNER -> (holder as SeparatorLineViewHolder).bind(banners[position], position)
             COVER_BANNER -> (holder as CoverBannerViewHolder).bind(banners[position], position)
-            else -> (holder as SepratorLineViewHolder).bind(banners[position], position)
+            USER_BANNER -> (holder as UserViewHolder).bind(banners[position], position)
+            SUPER_BANNER -> (holder as SuperUserViewHolder).bind(banners[position], position)
+            TEXT_BANNER -> (holder as TextViewHolder).bind(banners[position], position)
+            IMAGE_BANNER -> (holder as ImageViewHolder).bind(banners[position], position)
+            NA_BANNER -> (holder as NaViewHolder).bind(banners[position], position)
+            else -> (holder as NaViewHolder).bind(banners[position], position)
 
         }
     }
@@ -96,12 +127,15 @@ class MainAdapter(
             "strip" -> STRIP_BANNER
             "line" -> LINE_BANNER
             "cover" -> COVER_BANNER
-            else -> LINE_BANNER
-
+            "user" -> USER_BANNER
+            "super" -> SUPER_BANNER
+            "text" -> TEXT_BANNER
+            "image" -> IMAGE_BANNER
+            else -> NA_BANNER
         }
     }
 
-    fun setData(list: List<HomeBannersResponse.HomeBannersResponseItem>) {
+    fun setData(list: ArrayList<HomeBannersResponse.HomeBannersResponseItem>) {
         banners = list
         notifyDataSetChanged()              /// <----cat
     }
@@ -110,7 +144,6 @@ class MainAdapter(
         RecyclerView.ViewHolder(binding.root) {
         var background = binding.ivAvatar
         fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
-                Toast.makeText(context, banner.img,Toast.LENGTH_LONG)
             banner.img?.let {
                 Glide.with(context).load(it).into(background)
             }
@@ -121,7 +154,6 @@ class MainAdapter(
         RecyclerView.ViewHolder(binding.root) {
         var background = binding.ivAvatar
         fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
-            Toast.makeText(context, banner.img, Toast.LENGTH_LONG)
             banner.img?.let {
                 Glide.with(context).load(it).into(background)
             }
@@ -133,7 +165,6 @@ class MainAdapter(
         var background = binding.ivAvatar
         fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
 //            text.text = banner.text
-            Toast.makeText(context, banner.img,Toast.LENGTH_LONG)
             banner.img?.let {
                 Glide.with(context).load(it).into(background)
 
@@ -148,7 +179,6 @@ class MainAdapter(
         var background = binding.ivAvatar
         fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
 //            text.text = banner.text
-            Toast.makeText(context, banner.img,Toast.LENGTH_LONG)
             banner.img?.let {
 
                 Glide.with(context).load(it).into(background)
@@ -157,17 +187,71 @@ class MainAdapter(
 
     }
 
-    class SepratorLineViewHolder(private val binding: ItemLineSepratorBinding, private val context: Context) :
+    class SeparatorLineViewHolder(private val binding: ItemLineSepratorBinding, private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         var background = binding.ivAvatar
         fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
-            Toast.makeText(context, banner.img,Toast.LENGTH_LONG)
             banner.img?.let {
-
                 Glide.with(context).load(it).into(background)
             }
         }
     }
+
+    class UserViewHolder(private val binding: ItemUserProfileBinding, private val context: Context) :
+        RecyclerView.ViewHolder(binding.root) {
+        var dp = binding.profileImage
+        var username = binding.username
+        var bio = binding.bio
+
+        fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
+            banner.img?.let {
+                Glide.with(context).load(it).into(dp)
+            }
+            username.text = banner.text
+            bio.text = banner.color
+        }
+    }
+    class SuperUserViewHolder(private val binding: ItemSuperUserProfileBinding, private val context: Context) :
+        RecyclerView.ViewHolder(binding.root) {
+        var dp = binding.profileImage
+        var username = binding.username
+        var bio = binding.bio
+
+        fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
+            banner.img?.let {
+                Glide.with(context).load(it).into(dp)
+            }
+            username.text = banner.text
+            bio.text = banner.color
+        }
+    }
+
+    class ImageViewHolder(private val binding: ItemImageBannerBinding, private val context: Context) :
+        RecyclerView.ViewHolder(binding.root) {
+        var img = binding.ivImage
+
+        fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
+            banner.img?.let {
+                Glide.with(context).load(it).into(img)
+            }
+        }
+    }
+
+    class TextViewHolder(private val binding: ItemTextBinding, private val context: Context) :
+        RecyclerView.ViewHolder(binding.root) {
+        var textView = binding.tvText
+
+        fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
+            textView.text = banner.text
+        }
+    }
+
+    class NaViewHolder(private val binding: ItemNaBinding, private val context: Context) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(banner: HomeBannersResponse.HomeBannersResponseItem, pos: Int) {
+        }
+    }
+
 
 
 }

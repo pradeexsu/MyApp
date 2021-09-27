@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 
 
 import com.seven.myapp.databinding.ActivityMainBinding
+import com.seven.myapp.response.HomeBannersResponse
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             if(response.isSuccessful){
                 Toast.makeText(this,"success to fetch data",Toast.LENGTH_LONG).show()
                 response.body()?.let {
-                adapter.setData(it)
+                adapter.setData(it as ArrayList<HomeBannersResponse.HomeBannersResponseItem>)
                 }
             }
             else{

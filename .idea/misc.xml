@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners.xml" value="0.264" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners_pal1.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners_pal2.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners_pal3.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners_pal4.xml" value="0.1" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/drawable/bg_round_corners_pal5.xml" value="0.1" />
         <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_main.xml" value="0.259375" />
         <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_cover_banner.xml" value="0.259375" />
-        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_line_seprator.xml" value="0.5634920634920635" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_image_banner.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_line_seprator.xml" value="0.264" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_na.xml" value="0.259375" />
         <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_rectangular_banner.xml" value="0.25" />
         <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_square_banner.xml" value="0.259375" />
         <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_strip_banner.xml" value="0.259375" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_super_user_profile.xml" value="0.259375" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_text.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/prade/AndroidStudioProjects/MyApp/app/src/main/res/layout/item_user_profile.xml" value="0.259375" />
       </map>
     </option>
   </component>
