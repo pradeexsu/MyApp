@@ -10,7 +10,7 @@ import com.seven.myapp.databinding.*
 import com.seven.myapp.response.HomeBannersResponse
 
 class MainAdapter(
-    val context: Context,
+    private val context: Context,
     private var clickedSquare: SquareBannerViewHolder.ItemClickedSquare,
     private var clickedRect: RectangularBannerViewHolder.ItemClickedRect,
     private var textClicked: TextViewHolder.TextViewClicked,
